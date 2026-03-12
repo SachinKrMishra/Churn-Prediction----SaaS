@@ -1,4 +1,5 @@
 python-dotenv
+pymongo
 pandas 
 numpy
 xgboost
@@ -14,4 +15,4 @@ uvicorn
 python-multipart
 seaborn
 
-## -e.
+##-e . 
