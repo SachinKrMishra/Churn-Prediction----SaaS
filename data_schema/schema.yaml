@@ -1,0 +1,16 @@
+columns:
+  Age: int64
+  Income_Level: object
+  Number_of_Subscriptions: int64
+  Avg_Usage_Hours_Per_Week: float64
+  App_Switch_Frequency: int64
+  Discount_Used: int64
+  Customer_Support_Interactions: int64
+  Payment_Mode: object
+  Tenure_Months: int64
+  Device_Type: object
+  Satisfaction_Score: int64
+  Monthly_Total_Spend: float64
+  Will_Cancel_Next_3_Months: int64
+
+target_column: Will_Cancel_Next_3_Months
