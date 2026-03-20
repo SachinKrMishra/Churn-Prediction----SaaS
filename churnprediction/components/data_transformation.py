@@ -118,6 +118,9 @@ class DataTransformation:
 
             logging.info("Data transformation completed successfully")
 
+            ## Model Pusher
+            save_object("final_model/preprocessor.pkl", preprocessor)
+
             return DataTransformationArtifact(
                 transformed_object_file_path=self.data_transformation_config.transformed_object_file_path,
                 transformed_train_file_path=self.data_transformation_config.transformed_train_file_path,

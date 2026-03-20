@@ -140,6 +140,9 @@ class ModelTrainer:
 
             logging.info(f"Best Model: {best_model_name}")
 
+            ## Model Pusher
+            save_object("final_model/model.pkl",best_model)
+
             return ModelTrainerArtifact(
                 trained_model_file_path=self.model_trainer_config.trained_model_file_path,
                 train_metric_artifact=best_train_metrics,
