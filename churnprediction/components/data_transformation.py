@@ -48,7 +48,6 @@ class DataTransformation:
                 "Discount_Used",
                 "Customer_Support_Interactions",
                 "Tenure_Months",
-                "Satisfaction_Score",
                 "Monthly_Total_Spend"
             ]
 
@@ -83,10 +82,12 @@ class DataTransformation:
             train_df = self.read_data(self.data_validation_artifact.valid_train_file_path)
             test_df = self.read_data(self.data_validation_artifact.valid_test_file_path)
 
-            # Drop ID column
-            if "Customer_ID" in train_df.columns:
-                train_df = train_df.drop(columns=["Customer_ID"])
-                test_df = test_df.drop(columns=["Customer_ID"])
+            # Columns to drop (ID + leakage)
+            drop_columns = ["Customer_ID", "Satisfaction_Score"]
+
+            # Drop only if present (safe handling)
+            train_df = train_df.drop(columns=[col for col in drop_columns if col in train_df.columns])
+            test_df = test_df.drop(columns=[col for col in drop_columns if col in test_df.columns])
 
             # Split input & target
             input_feature_train_df = train_df.drop(columns=[TARGET_COLUMN], axis=1)
