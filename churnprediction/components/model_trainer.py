@@ -18,7 +18,6 @@ from churnprediction.entity.artifact_entity import (
 )
 from churnprediction.utils.main_utils.utils import load_numpy_array_data, save_object
 
-
 class ModelTrainer:
     def __init__(self, model_trainer_config, data_transformation_artifact):
         try:
@@ -139,7 +138,7 @@ class ModelTrainer:
             save_object(self.model_trainer_config.trained_model_file_path, best_model)
 
             logging.info(f"Best Model: {best_model_name}")
-
+            
             ## Model Pusher
             save_object("final_model/model.pkl",best_model)
 
