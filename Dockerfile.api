@@ -1,0 +1,21 @@
+# Use a lightweight Python base image
+FROM python:3.10-slim
+
+# Set working directory inside container
+WORKDIR /app
+
+# Copy all project files into container
+# (includes churnprediction/, app.py, final_model/, etc.)
+COPY . .
+
+# Install all required Python dependencies
+# --no-cache-dir reduces image size
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose port 8000 for FastAPI
+EXPOSE 8000
+
+# Run FastAPI app using uvicorn
+# app:app → app.py file, FastAPI object named 'app'
+# 0.0.0.0 → allows access from outside container
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]

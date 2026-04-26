@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  api:
+    # Build API container using Dockerfile.api
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+
+    container_name: churn_api
+
+    # Map container port 8000 → host port 8000
+    ports:
+      - "8000:8000"
+
+  ui:
+    # Build UI container using Dockerfile.ui
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+
+    container_name: churn_ui
+
+    # Map container port 8501 → host port 8501
+    ports:
+      - "8501:8501"
+
+    # Ensure API starts before UI
+    depends_on:
+      - api
