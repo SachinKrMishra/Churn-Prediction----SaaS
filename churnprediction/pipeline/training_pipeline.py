@@ -26,7 +26,7 @@ from churnprediction.entity.artifact_entity import(
 
 class TrainingPipeline:
     def __init__(self):
-        self.taining_pipeline_conig = TrainingPipelineConfig()
+        self.training_pipeline_config = TrainingPipelineConfig()
 
     def start_data_ingestion(self):
         try:

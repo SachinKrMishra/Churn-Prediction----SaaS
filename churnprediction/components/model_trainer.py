@@ -121,8 +121,8 @@ class ModelTrainer:
                         best_test_metrics = test_metrics
 
             # Overfitting check
-            train_f1 = train_metrics.f1_score
-            test_f1 = test_metrics.f1_score
+            train_f1 = best_train_metrics.f1_score
+            test_f1 = best_test_metrics.f1_score
 
             if abs(train_f1 - test_f1) > self.model_trainer_config.overfitting_underfitting_threshold:
                 logging.warning(

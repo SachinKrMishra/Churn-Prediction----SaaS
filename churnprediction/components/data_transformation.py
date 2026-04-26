@@ -82,8 +82,8 @@ class DataTransformation:
             train_df = self.read_data(self.data_validation_artifact.valid_train_file_path)
             test_df = self.read_data(self.data_validation_artifact.valid_test_file_path)
 
-            # Columns to drop (ID + leakage)
-            drop_columns = ["Customer_ID", "Satisfaction_Score"]
+            # Columns to drop (leakage)
+            drop_columns = ["Satisfaction_Score"]
 
             # Drop only if present (safe handling)
             train_df = train_df.drop(columns=[col for col in drop_columns if col in train_df.columns])
