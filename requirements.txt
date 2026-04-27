@@ -15,5 +15,6 @@ uvicorn
 python-multipart
 seaborn
 streamlit
+shap
 
 ##-e . 

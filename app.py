@@ -1,17 +1,13 @@
 import pandas as pd
+import numpy as np
 from fastapi import FastAPI
 from pydantic import BaseModel
-
 from churnprediction.pipeline.prediction_pipeline import PredictionPipeline
 
-# Initialize FastAPI app
 app = FastAPI()
-
-# Load pipeline ONCE (important for performance)
 pipeline = PredictionPipeline()
 
 
-# Input schema
 class ChurnRequest(BaseModel):
     Age: int
     Number_of_Subscriptions: int
@@ -26,26 +22,26 @@ class ChurnRequest(BaseModel):
     Device_Type: str
 
 
-# Home route
 @app.get("/")
 def home():
-    return {"message": "Churn Prediction API is running"}
+    return {"message": "Churn Prediction API running"}
 
 
-# Prediction route
 @app.post("/predict")
 def predict(data: ChurnRequest):
     try:
-        # Convert input to DataFrame
-        input_dict = data.dict()
-        df = pd.DataFrame([input_dict])
+        df = pd.DataFrame([data.dict()])
 
-        # Prediction
-        pred, prob = pipeline.predict(df)
+        prediction, probability, pos, neg, actions, base, shap_vals, feature_names = pipeline.predict(df)
 
         return {
-            "prediction": int(pred[0]),
-            "probability": float(prob[0])
+            "prediction": int(prediction[0]),
+            "probability": float(probability[0]),
+            "top_positive": pos,
+            "top_negative": neg,
+            "actions": actions,
+            "shap_values": shap_vals,
+            "feature_names": feature_names
         }
 
     except Exception as e:

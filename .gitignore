@@ -1,1 +1,7 @@
-venv
+venv/
+logs/
+Artifacts/
+final_model/
+mlruns/
+__pycache__/
+*.pyc
