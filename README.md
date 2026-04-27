@@ -14,7 +14,7 @@ It is built with a **complete ML lifecycle**:
 * Data Validation (Schema + Drift Detection)
 * Data Transformation (Feature Engineering + Pipelines)
 * Model Training (Hyperparameter Tuning + MLflow Tracking)
-* Prediction Pipeline (Reusable inference logic)
+* Prediction Pipeline (Explainability (SHAP))
 * FastAPI Backend (Model serving)
 * Streamlit Frontend (User interface)
 * Dockerized Deployment (Multi-container setup)
@@ -47,8 +47,10 @@ Raw Data → Ingestion → Validation → Transformation → Model Training → 
 * **Python**
 * **Pandas, NumPy**
 * **Scikit-learn**
+* **Random Forest**
 * **XGBoost**
 * **MLflow**
+* **SHAP**
 * **FastAPI**
 * **Streamlit**
 * **Docker & Docker Compose**
@@ -62,6 +64,7 @@ Raw Data → Ingestion → Validation → Transformation → Model Training → 
 ✔ Feature engineering using ColumnTransformer
 ✔ Hyperparameter tuning with GridSearchCV
 ✔ Experiment tracking using MLflow
+✔ Explainability using SHAP
 ✔ REST API using FastAPI
 ✔ Interactive UI using Streamlit
 ✔ Dockerized multi-service deployment
