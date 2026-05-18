@@ -59,7 +59,7 @@ Raw Data → Ingestion → Validation → Transformation → Model Training → 
 
 ## 🚀 Features
 
-✔ Modular ML pipeline (industry-style)
+✔ Modular ML pipeline
 ✔ Data validation with schema + drift detection
 ✔ Feature engineering using ColumnTransformer
 ✔ Hyperparameter tuning with GridSearchCV
